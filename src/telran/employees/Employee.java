@@ -14,9 +14,8 @@ public class Employee implements Comparable<Employee>{
 	}
 	@Override
 	public int compareTo(Employee o) {
-		// TODO 
-		//comparing according to id
-		return 0;
+		
+		return Long.compare(this.id, o.id);
 	}
 	public long getId() {
 		return id;
