@@ -2,6 +2,9 @@ package telran.util.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,29 +31,50 @@ void setCompany() {
 }
 	@Test
 	void testAddEmployee() {
-		//TODO
+		Employee newEmployee = new Employee(900L,1500,"FrontOffice");
+		company.addEmployee(newEmployee);
+		assertEquals(newEmployee,company.getEmployee(900L));
 		assertThrowsExactly(IllegalStateException.class,
-				() -> company.addEmployee(empl1));
+				() -> company.addEmployee(newEmployee));
 	}
 
 	@Test
 	void testGetEmployee() {
-		//TODO
+		assertEquals(empl1,company.getEmployee(ID1));
+		assertEquals(empl2,company.getEmployee(ID2));
+		assertEquals(empl3,company.getEmployee(ID3));
+		assertNull(company.getEmployee(900l));
 	}
 
 	@Test
 	void testRemoveEmployee() {
-		//TODO
+		assertEquals(empl1,company.removeEmployee(ID1));
+		assertThrows(NoSuchElementException.class,
+				() -> company.removeEmployee(900L));
+		assertThrows(NoSuchElementException.class, 
+				() -> company.removeEmployee(ID1));
 	}
 
 	@Test
 	void testGetDepartmentBudget() {
-		//TODO
+		assertEquals(SALARY1 + SALARY2,company.getDepartmentBudget(DEPARTMENT1));
+		assertEquals(0, company.getDepartmentBudget("Electra Maliyot"));
 	}
 
 	@Test
 	void testIterator() {
-		//TODO
+		Iterator<Employee> iterator = company.iterator();
+		assertTrue(iterator.hasNext());
+		assertEquals(empl2, iterator.next());
+		
+		assertTrue(iterator.hasNext());
+		assertEquals(empl1, iterator.next());
+		
+		assertTrue(iterator.hasNext());
+		assertEquals(empl3, iterator.next());
+		
+		assertFalse(iterator.hasNext());
+		assertThrows(NoSuchElementException.class, () -> iterator.next());
 	}
 
 }

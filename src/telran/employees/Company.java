@@ -9,12 +9,28 @@ public class Company implements Iterable{
 	public void addEmployee(Employee empl) {
 		//TODO adds new Employee to array of employees
 		//if an employee with id equaled to id of empl exists, then to throw IllegalStateException
+		for(Employee employee : employees) {
+			if(employee.getId() == empl.getId()) {
+				throw new IllegalStateException("Employee with current ID" + empl.getId() + "already exist.");
+			}
+		}
+		Employee[]newEmployees = java.util.Arrays.copyOf(employees,employees.length + 1);
+		newEmployees[newEmployees.length -1] = empl;
+		employees = newEmployees;
 	}
 	public Employee getEmployee(long id) {
 		//TODO data about an employee with a given id value
 		//if the company doesn't have such employee, then return null
-		return null;
+		Employee result = null;
+		for(Employee employee : employees) {
+			if(employee.getId() == id) {
+				result = employee;
+				break;
+			}
+		}
+		return result;
 	}
+	
 	public Employee removeEmployee(long id) {
 		//TODO
 		//removes from the company an employee with a given id
