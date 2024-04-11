@@ -7,7 +7,7 @@ import telran.util.Arrays;
 public class Company implements Iterable{
 	private Employee[] employees;
 	public void addEmployee(Employee empl) {
-		//TODO adds new Employee to array of employees
+		// adds new Employee to array of employees
 		//if an employee with id equaled to id of empl exists, then to throw IllegalStateException
 		for(Employee employee : employees) {
 			if(employee.getId() == empl.getId()) {
@@ -18,8 +18,9 @@ public class Company implements Iterable{
 		newEmployees[newEmployees.length -1] = empl;
 		employees = newEmployees;
 	}
+	
 	public Employee getEmployee(long id) {
-		//TODO data about an employee with a given id value
+		// data about an employee with a given id value
 		//if the company doesn't have such employee, then return null
 		Employee result = null;
 		for(Employee employee : employees) {
@@ -47,13 +48,20 @@ public class Company implements Iterable{
 	public Company(Employee[] employees) {
 		this.employees = Arrays.copy(employees);
 	}
+	public String[] getDepartments(){
+		//TODO
+		//write method returning all departments
+		return null;
+	}
+	
+	
 	@Override
 	public Iterator<Employee> iterator() {
 		
 		return new CompanyIterator();
 	}
 	private class CompanyIterator implements Iterator<Employee> {
-//TODO
+         //TODO
 		//iterating all employees in the ascending order of the ID values
 		@Override
 		public boolean hasNext() {
