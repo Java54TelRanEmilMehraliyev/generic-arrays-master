@@ -8,7 +8,8 @@ import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import telran.employees.*;
+import telran.employees.Company;
+import telran.employees.Employee;
 
 class CompanyTest {
 private static final long ID1 = 123;
