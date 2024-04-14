@@ -4,6 +4,7 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 public class Arrays {
+	
 	public static  <T> int indexOf(T[] array, T element) {
 		int index = 0;
 		while(index < array.length && !equals(array[index], element)) {
@@ -95,6 +96,7 @@ public class Arrays {
 	
 		return search(array, predicate.negate());
 	}
+	
 	public static <T> T[] add (T[] array, T element) {
 		T[] result = java.util.Arrays.copyOf(array, array.length + 1);
 		result[array.length] = element;
