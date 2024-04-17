@@ -61,7 +61,7 @@ public class Company implements Iterable {
 		int total = 0;
 		for (Employee employee : employees) {
 			if (employee.getDepartment().equals(department)) {
-				total += employee.getBasicSalary();
+				total += employee.computeSalary();
 			}
 		}
 		return total;

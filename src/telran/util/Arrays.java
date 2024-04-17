@@ -3,6 +3,8 @@ package telran.util;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
+import telran.figures.Shape;
+
 public class Arrays {
 	
 	public static  <T> int indexOf(T[] array, T element) {
@@ -105,4 +107,14 @@ public class Arrays {
 	public static <T> T[] copy(T[] array) {
 		return java.util.Arrays.copyOf(array, array.length);
 	}
+
+
+	public static int indexOf(Shape[] array, long id) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
